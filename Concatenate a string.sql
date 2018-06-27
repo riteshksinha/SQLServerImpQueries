@@ -1,8 +1,8 @@
-select distinct t1.id,
+SELECT DISTINCT T1.ID,
   STUFF(
-         (SELECT ', ' + convert(varchar(10), t2.date, 120)
-          FROM yourtable t2
-          where t1.id = t2.id
-          FOR XML PATH (''))
-          , 1, 1, '')  AS date
-from yourtable t1;
+         (SELECT ', ' + CONVERT(VARCHAR(10), T2.DATE, 120)
+            FROM TABLENAME T2
+           WHERE T1.ID = T2.ID
+             FOR XML PATH (''))
+          , 1, 1, '')  AS CONCATENATED_DATE
+FROM TABLENAME T1;
